@@ -162,6 +162,9 @@
     .large-text,
     .body-text,
     .quote,
+    .statement-text,
+    .explain-text,
+    .panel-text,
     .question-text,
     .compare-word {
       line-break: strict;
@@ -321,6 +324,73 @@
       width: min(100%, 86rem);
     }
 
+    .statement-slide .slide-inner {
+      width: min(100%, 72rem);
+    }
+
+    .statement-text {
+      max-width: 21em;
+      font-size: 3.2rem;
+      line-height: 1.32;
+      font-weight: 900;
+      text-wrap: balance;
+    }
+
+    .explain-text {
+      max-width: 27em;
+      font-size: 2.35rem;
+      line-height: 1.48;
+      font-weight: 800;
+      text-wrap: balance;
+    }
+
+    .split-slide .slide-inner {
+      width: min(100%, 86rem);
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .feedback-panel {
+      display: grid;
+      align-content: start;
+      gap: 1.3rem;
+      min-height: 25rem;
+      padding: 2.2rem;
+      border: 2px solid var(--line);
+      border-left: 0.65rem solid var(--accent);
+      border-radius: 0.8rem;
+      background: rgba(255, 253, 248, 0.86);
+      box-shadow: var(--shadow);
+    }
+
+    .feedback-panel.precise {
+      border-left-color: var(--accent-2);
+    }
+
+    .panel-title {
+      color: var(--muted);
+      font-size: 1.35rem;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .panel-text {
+      color: var(--ink);
+      font-size: 2.15rem;
+      line-height: 1.42;
+      font-weight: 850;
+    }
+
+    .final-question {
+      font-size: 1.72rem;
+      line-height: 1.44;
+    }
+
     .question-layout {
       display: grid;
       grid-template-columns: minmax(0, 46rem) minmax(17rem, 22rem);
@@ -430,7 +500,7 @@
     }
 
     .progress-bar {
-      width: 12.5%;
+      width: 10%;
       height: 100%;
       border-radius: inherit;
       background: linear-gradient(90deg, var(--accent), var(--accent-2));
@@ -588,6 +658,37 @@
         line-height: 1.42;
       }
 
+      .statement-text {
+        font-size: 2.55rem;
+      }
+
+      .explain-text {
+        font-size: 1.65rem;
+      }
+
+      .split-grid {
+        gap: 1.2rem;
+      }
+
+      .feedback-panel {
+        min-height: 18rem;
+        padding: 1.35rem;
+        gap: 0.9rem;
+      }
+
+      .panel-title {
+        font-size: 1rem;
+      }
+
+      .panel-text {
+        font-size: 1.38rem;
+        line-height: 1.4;
+      }
+
+      .final-question {
+        font-size: 1.24rem;
+      }
+
       .qr-frame {
         width: min(13.8rem, 100%);
       }
@@ -625,6 +726,32 @@
       .body-text,
       .question-text {
         font-size: 1.32rem;
+      }
+
+      .statement-text {
+        font-size: 2.1rem;
+      }
+
+      .explain-text {
+        font-size: 1.38rem;
+      }
+
+      .split-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .feedback-panel {
+        min-height: auto;
+        padding: 1.2rem;
+      }
+
+      .panel-text {
+        font-size: 1.2rem;
+      }
+
+      .final-question {
+        font-size: 1.15rem;
       }
 
       .lead {
@@ -759,10 +886,30 @@
       </div>
     </section>
 
-    <section class="slide">
+    <section class="slide statement-slide">
       <div class="slide-inner">
-        <p class="kicker">Real Feeling</p>
-        <p class="large-text">道理我都懂，<br>但被批評的當下<br>還是會往心裡去😭<br>那怎麼辦？</p>
+        <p class="kicker">Useful Feedback</p>
+        <p class="statement-text">那我們怎麼知道，<br>怎樣是提供資訊的<br>「精準批評」，<br>哪些只是我們不用理會的<br>「責罵」？</p>
+      </div>
+    </section>
+
+    <section class="slide statement-slide">
+      <div class="slide-inner">
+        <p class="kicker">What Counts</p>
+        <p class="explain-text">許多責罵就只是「宣洩情緒」。<br><br>反之，精準的批評是就事論事的精神，理性客觀地給出建議、點出問題所在。<br><br>這才是真正「有用的資訊」。</p>
+      </div>
+    </section>
+
+    <section class="slide split-slide">
+      <div class="slide-inner split-grid">
+        <article class="feedback-panel">
+          <p class="panel-title">宣洩情緒的批評例如：</p>
+          <p class="panel-text">你為什麼又沒交作業！<br>都幾次了，<br>你這個人就是這樣糟糕，<br>講幾次你都不聽。</p>
+        </article>
+        <article class="feedback-panel precise">
+          <p class="panel-title">就事論事的建議例如：</p>
+          <p class="panel-text">你目前 10 次作業中有 7 份缺交，<br>這會影響到你的成績。<br>你認為這背後的問題，<br>有可能是時間管理或是修課心態上需要調整嗎？</p>
+        </article>
       </div>
     </section>
 
@@ -770,19 +917,19 @@
       <div class="slide-inner question-layout">
         <div>
           <p class="kicker">Your Turn</p>
-          <p class="question-text">當你知道自己是反脆弱的，<br>就是需要透過精準的批評來成長。<br><br>但有時候還是會不小心「往心裡去」。<br>這時你怎麼調適心情，<br>並把它變成下一步行動？<br><br>掃描畫面上的 QR code，<br>留言告訴我們，<br>也看看其他人的留言！</p>
+          <p class="question-text final-question">你的人生經驗中，<br>收到的建議比較偏向<br>「客觀精準的就事論事」<br>還是「宣洩情緒的批評」？<br><br>你願意簡單分享其中一次的場景嗎？<br>當下你的感受是什麼？<br><br>掃描右側 QR code 留言，<br>也看看其他人的分享！</p>
         </div>
         <div class="qr-zone">
           <div class="qr-frame" id="qrFrame">
-            <div class="qr-placeholder">待放入<br>Slido 連結</div>
+            <div class="qr-placeholder">待放入<br>Padlet 連結</div>
           </div>
-          <div class="slido-url" id="slidoUrlText">Slido QR code</div>
+          <div class="slido-url" id="slidoUrlText">Padlet QR code</div>
         </div>
       </div>
     </section>
   </main>
 
-  <div class="counter" id="counter">1 / 8</div>
+  <div class="counter" id="counter">1 / 10</div>
   <nav class="nav" aria-label="投影片導覽">
     <button type="button" id="prevBtn" aria-label="上一張">‹</button>
     <div class="progress" aria-hidden="true">
@@ -792,7 +939,7 @@
   </nav>
 
   <script>
-    const SLIDO_URL = "https://app.sli.do/event/x9FpKo7Kq9jRxrwmhj8nYC";
+    const PADLET_URL = "https://padlet.com/tschool/2026-er57ufx52x77wybi";
 
     const slides = Array.from(document.querySelectorAll(".slide"));
     const counter = document.getElementById("counter");
@@ -807,13 +954,13 @@
     let touchStartX = 0;
 
     function renderQrCode() {
-      if (!SLIDO_URL) {
+      if (!PADLET_URL) {
         return;
       }
 
-      const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=640x640&margin=24&data=" + encodeURIComponent(SLIDO_URL);
-      qrFrame.innerHTML = `<img src="${qrUrl}" alt="Slido 留言 QR code">`;
-      slidoUrlText.textContent = SLIDO_URL;
+      const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=640x640&margin=24&data=" + encodeURIComponent(PADLET_URL);
+      qrFrame.innerHTML = `<img src="${qrUrl}" alt="Padlet 留言 QR code">`;
+      slidoUrlText.textContent = PADLET_URL;
     }
 
     function showSlide(index) {
