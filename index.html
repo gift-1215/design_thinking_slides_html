@@ -477,58 +477,73 @@
 
     @media (max-width: 1180px) {
       .slide {
-        padding: 5.6rem 3.2rem 6.4rem;
+        padding: 4.7rem 2.6rem 5.8rem;
+      }
+
+      .slide-inner {
+        width: min(100%, 56rem);
+        gap: 1.7rem;
       }
 
       h1 {
-        font-size: 4rem;
+        font-size: 3.35rem;
       }
 
       h2,
       .large-text {
-        font-size: 3.15rem;
+        font-size: 2.55rem;
       }
 
       .body-text {
-        font-size: 2.05rem;
+        font-size: 1.55rem;
+      }
+
+      .quote {
+        font-size: 2.65rem;
+      }
+
+      .kicker {
+        font-size: 1rem;
       }
 
       .two-column {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        grid-template-columns: minmax(0, 25rem) minmax(18rem, 25rem);
+        gap: 2.8rem;
+        justify-content: center;
       }
 
       .two-column .large-text,
       .two-column .body-text {
-        max-width: 19em;
+        max-width: 15em;
       }
 
       .diagram {
-        min-height: 16rem;
+        width: min(100%, 25rem);
+        min-height: 18rem;
       }
 
       .diagram-node {
-        width: 7rem;
-        height: 7rem;
-        font-size: 1.05rem;
+        width: 6.6rem;
+        height: 6.6rem;
+        font-size: 0.98rem;
       }
 
       .diagram-node:nth-child(1) {
-        left: 6%;
-        top: 2.1rem;
+        left: 7%;
+        top: 2rem;
       }
 
       .diagram-node:nth-child(2) {
-        right: 6%;
-        top: 2.1rem;
+        right: 7%;
+        top: 2rem;
       }
 
       .diagram-node:nth-child(3) {
-        bottom: 1.6rem;
+        bottom: 1.7rem;
       }
 
       .arrow.one {
-        left: 45%;
+        left: 44%;
         top: 3.2rem;
       }
 
@@ -543,35 +558,42 @@
       }
 
       .compare {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.9rem;
+        width: min(100%, 25rem);
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
       }
 
       .compare-item {
-        grid-template-columns: 1fr;
-        gap: 0.65rem;
-        min-height: 7.2rem;
+        grid-template-columns: 4.8rem minmax(0, 1fr);
+        gap: 0.8rem;
+        min-height: 4.9rem;
+        padding: 0.95rem 1.05rem;
       }
 
       .compare-label {
-        font-size: 1.75rem;
+        font-size: 1.45rem;
       }
 
       .compare-word {
-        font-size: 1.15rem;
+        font-size: 1rem;
       }
 
       .question-layout {
-        grid-template-columns: minmax(0, 1fr) minmax(14rem, 16rem);
-        gap: 2.2rem;
+        grid-template-columns: minmax(0, 32rem) minmax(13rem, 15rem);
+        gap: 2rem;
       }
 
       .question-text {
-        font-size: 1.65rem;
+        font-size: 1.36rem;
+        line-height: 1.42;
       }
 
       .qr-frame {
-        width: min(15rem, 100%);
+        width: min(13.8rem, 100%);
+      }
+
+      .slido-url {
+        font-size: 0.95rem;
       }
     }
 
@@ -597,12 +619,12 @@
 
       h2,
       .large-text {
-        font-size: 2.55rem;
+        font-size: 2.15rem;
       }
 
       .body-text,
       .question-text {
-        font-size: 1.65rem;
+        font-size: 1.32rem;
       }
 
       .lead {
@@ -610,7 +632,7 @@
       }
 
       .quote {
-        font-size: 2.25rem;
+        font-size: 2rem;
       }
 
       .diagram {
@@ -637,7 +659,7 @@
       }
 
       .compare-word {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
 
       .qr-frame {
@@ -748,7 +770,7 @@
       <div class="slide-inner question-layout">
         <div>
           <p class="kicker">Your Turn</p>
-          <p class="question-text">當你知道自己是反脆弱的，<br>就是需要透過精準的批評來成長。<br><br>但有時候還是會不小心「往心裡去」。<br>這時你怎麼調適心情，<br>並把它變成下一步行動？<br><br>掃描畫面上的 QR code 留言告訴我們，<br>也看看其他人的留言！</p>
+          <p class="question-text">當你知道自己是反脆弱的，<br>就是需要透過精準的批評來成長。<br><br>但有時候還是會不小心「往心裡去」。<br>這時你怎麼調適心情，<br>並把它變成下一步行動？<br><br>掃描畫面上的 QR code，<br>留言告訴我們，<br>也看看其他人的留言！</p>
         </div>
         <div class="qr-zone">
           <div class="qr-frame" id="qrFrame">
