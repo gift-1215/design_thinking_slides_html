@@ -75,7 +75,7 @@
     }
 
     .slide-inner {
-      width: min(100%, 78rem);
+      width: min(100%, 86rem);
       display: grid;
       gap: 2.5rem;
       align-items: center;
@@ -115,7 +115,7 @@
 
     h2 {
       max-width: 12em;
-      font-size: 4.35rem;
+      font-size: 3.9rem;
       line-height: 1.16;
       font-weight: 900;
       text-wrap: balance;
@@ -132,15 +132,15 @@
 
     .large-text {
       max-width: 15em;
-      font-size: 4.25rem;
+      font-size: 3.85rem;
       line-height: 1.22;
       font-weight: 900;
       text-wrap: balance;
     }
 
     .body-text {
-      max-width: 18em;
-      font-size: 2.55rem;
+      max-width: 15em;
+      font-size: 2.35rem;
       line-height: 1.45;
       font-weight: 760;
       text-wrap: balance;
@@ -189,12 +189,18 @@
     }
 
     .two-column {
-      grid-template-columns: minmax(0, 1.04fr) minmax(21rem, 0.72fr);
-      gap: 4.5rem;
+      grid-template-columns: minmax(0, 38rem) minmax(28rem, 40rem);
+      gap: 5rem;
+      justify-content: center;
+    }
+
+    .two-column > * {
+      min-width: 0;
     }
 
     .diagram {
       position: relative;
+      width: min(100%, 39rem);
       min-height: 24rem;
       border: 2px solid var(--line);
       background: rgba(255, 253, 248, 0.72);
@@ -272,6 +278,7 @@
       grid-template-columns: 1fr;
       gap: 1.1rem;
       align-self: center;
+      width: min(100%, 39rem);
     }
 
     .compare-item {
@@ -311,20 +318,21 @@
     }
 
     .question-slide .slide-inner {
-      width: min(100%, 82rem);
+      width: min(100%, 86rem);
     }
 
     .question-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(16rem, 19rem);
-      gap: 3rem;
+      grid-template-columns: minmax(0, 46rem) minmax(17rem, 22rem);
+      gap: 4rem;
       align-items: center;
+      justify-content: center;
       justify-items: stretch;
     }
 
     .question-text {
-      max-width: 25em;
-      font-size: 1.9rem;
+      max-width: 20em;
+      font-size: 2rem;
       line-height: 1.46;
       font-weight: 800;
       text-align: left;
@@ -339,7 +347,7 @@
     .qr-frame {
       display: grid;
       place-items: center;
-      width: min(18rem, 100%);
+      width: min(20rem, 100%);
       aspect-ratio: 1;
       border: 0.45rem solid var(--ink);
       border-radius: 0.5rem;
@@ -672,7 +680,7 @@
         <div>
           <p class="kicker">Antifragile</p>
           <h2>由 Taleb 提出</h2>
-          <p class="body-text">意思是：脆弱的相反。<br>它不只是不害怕攻擊，<br>還能從<span class="keyword nowrap">壓力、錯誤、批評與不確定</span>中變得更好。</p>
+          <p class="body-text">意思是：脆弱的相反。<br>它不只是不害怕攻擊，<br>還能從<br><span class="keyword">壓力、錯誤、批評<br>與不確定</span><br>中變得更好。</p>
         </div>
         <div class="compare" aria-label="脆弱、強固、反脆弱比較">
           <div class="compare-item">
@@ -695,7 +703,7 @@
       <div class="slide-inner two-column">
         <div>
           <p class="kicker">Prototype</p>
-          <p class="large-text">數實的學生在設計出一個產品時，<br>需要不斷地找不同的人試用，<br>再從得到的回饋中校正。</p>
+          <p class="large-text">數實的學生<br>在設計出產品時，<br>需要不斷找<br>不同的人試用，<br>再從回饋中校正。</p>
         </div>
         <div class="diagram" aria-label="設計循環圖">
           <div class="diagram-node">試作<br>Prototype</div>
@@ -740,7 +748,7 @@
       <div class="slide-inner question-layout">
         <div>
           <p class="kicker">Your Turn</p>
-          <p class="question-text">當你知道自己是反脆弱的，就是需要透過獲得精準的批評來成長。<br><br>但有時候就是會不小心「往心裡去」，這時你都怎麼調適自己的心情，並把它變成下一步行動？<br><br>掃描畫面上的 QR code 留言告訴我們，也看看其他人的留言！</p>
+          <p class="question-text">當你知道自己是反脆弱的，<br>就是需要透過精準的批評來成長。<br><br>但有時候還是會不小心「往心裡去」。<br>這時你怎麼調適心情，<br>並把它變成下一步行動？<br><br>掃描畫面上的 QR code 留言告訴我們，<br>也看看其他人的留言！</p>
         </div>
         <div class="qr-zone">
           <div class="qr-frame" id="qrFrame">
