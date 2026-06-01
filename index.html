@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>反脆弱與設計思考</title>
+  <title>設計思考中的思考</title>
   <style>
     :root {
       color-scheme: light;
@@ -99,9 +99,7 @@
       background: currentColor;
     }
 
-    h1,
-    h2,
-    p {
+    h1, h2, p {
       margin: 0;
     }
 
@@ -156,24 +154,10 @@
       text-wrap: balance;
     }
 
-    h1,
-    h2,
-    .lead,
-    .large-text,
-    .body-text,
-    .quote,
-    .statement-text,
-    .explain-text,
-    .panel-text,
-    .question-text,
-    .compare-word {
+    h1, h2, .lead, .large-text, .body-text, .quote, .statement-text, .explain-text, .panel-text, .question-text, .compare-word {
       line-break: strict;
       overflow-wrap: normal;
       word-break: keep-all;
-    }
-
-    .nowrap {
-      white-space: nowrap;
     }
 
     .quote::before {
@@ -197,8 +181,31 @@
       justify-content: center;
     }
 
-    .two-column > * {
-      min-width: 0;
+    .diamond-container {
+      position: relative;
+      width: 100%;
+      height: 24rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .diamond-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .diamond-label {
+      font-size: 1.2rem;
+      font-weight: 900;
+      fill: var(--ink);
+    }
+
+    .diamond-highlight {
+      stroke: var(--accent);
+      stroke-width: 4;
+      stroke-dasharray: 10 5;
+      fill: rgba(216, 79, 42, 0.05);
     }
 
     .diagram {
@@ -233,24 +240,9 @@
       box-shadow: 0 16px 36px rgba(32, 33, 36, 0.16);
     }
 
-    .diagram-node:nth-child(1) {
-      left: 2.4rem;
-      top: 2.6rem;
-      background: var(--accent-3);
-    }
-
-    .diagram-node:nth-child(2) {
-      right: 2.8rem;
-      top: 4rem;
-      background: var(--accent);
-    }
-
-    .diagram-node:nth-child(3) {
-      left: 50%;
-      bottom: 2.6rem;
-      transform: translateX(-50%);
-      background: var(--accent-2);
-    }
+    .diagram-node:nth-child(1) { left: 2.4rem; top: 2.6rem; background: var(--accent-3); }
+    .diagram-node:nth-child(2) { right: 2.8rem; top: 4rem; background: var(--accent); }
+    .diagram-node:nth-child(3) { left: 50%; bottom: 2.6rem; transform: translateX(-50%); background: var(--accent-2); }
 
     .arrow {
       position: absolute;
@@ -258,75 +250,9 @@
       font-size: 4rem;
       font-weight: 900;
     }
-
-    .arrow.one {
-      left: 43%;
-      top: 4.8rem;
-    }
-
-    .arrow.two {
-      right: 29%;
-      bottom: 6rem;
-      transform: rotate(120deg);
-    }
-
-    .arrow.three {
-      left: 24%;
-      bottom: 6.5rem;
-      transform: rotate(240deg);
-    }
-
-    .compare {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.1rem;
-      align-self: center;
-      width: min(100%, 39rem);
-    }
-
-    .compare-item {
-      display: grid;
-      grid-template-columns: 6.5rem minmax(0, 1fr);
-      gap: 1.25rem;
-      align-items: center;
-      min-height: 7rem;
-      padding: 1.25rem 1.4rem;
-      border: 2px solid var(--line);
-      border-left: 0.6rem solid var(--accent-3);
-      border-radius: 0.75rem;
-      background: rgba(255, 253, 248, 0.82);
-      box-shadow: 0 14px 38px rgba(32, 33, 36, 0.08);
-    }
-
-    .compare-item:nth-child(2) {
-      border-left-color: var(--accent-2);
-    }
-
-    .compare-item:nth-child(3) {
-      border-left-color: var(--accent);
-    }
-
-    .compare-label {
-      color: var(--ink);
-      font-size: 2rem;
-      line-height: 1.1;
-      font-weight: 900;
-    }
-
-    .compare-word {
-      color: var(--muted);
-      font-size: 1.45rem;
-      line-height: 1.35;
-      font-weight: 780;
-    }
-
-    .question-slide .slide-inner {
-      width: min(100%, 86rem);
-    }
-
-    .statement-slide .slide-inner {
-      width: min(100%, 72rem);
-    }
+    .arrow.one { left: 43%; top: 4.8rem; }
+    .arrow.two { right: 29%; bottom: 6rem; transform: rotate(120deg); }
+    .arrow.three { left: 24%; bottom: 6.5rem; transform: rotate(240deg); }
 
     .statement-text {
       max-width: 21em;
@@ -342,16 +268,6 @@
       line-height: 1.48;
       font-weight: 800;
       text-wrap: balance;
-    }
-
-    .bridge-text {
-      max-width: 26em;
-      font-size: 2.55rem;
-      line-height: 1.48;
-    }
-
-    .split-slide .slide-inner {
-      width: min(100%, 86rem);
     }
 
     .split-grid {
@@ -374,28 +290,10 @@
       box-shadow: var(--shadow);
     }
 
-    .feedback-panel.precise {
-      border-left-color: var(--accent-2);
-    }
+    .feedback-panel.precise { border-left-color: var(--accent-2); }
 
-    .panel-title {
-      color: var(--muted);
-      font-size: 1.35rem;
-      line-height: 1.25;
-      font-weight: 900;
-    }
-
-    .panel-text {
-      color: var(--ink);
-      font-size: 2.15rem;
-      line-height: 1.42;
-      font-weight: 850;
-    }
-
-    .final-question {
-      font-size: 1.72rem;
-      line-height: 1.44;
-    }
+    .panel-title { color: var(--muted); font-size: 1.35rem; font-weight: 900; }
+    .panel-text { color: var(--ink); font-size: 2.15rem; line-height: 1.42; font-weight: 850; }
 
     .question-layout {
       display: grid;
@@ -403,23 +301,11 @@
       gap: 4rem;
       align-items: center;
       justify-content: center;
-      justify-items: stretch;
     }
 
-    .question-text {
-      max-width: 20em;
-      font-size: 2rem;
-      line-height: 1.46;
-      font-weight: 800;
-      text-align: left;
-    }
+    .question-text { font-size: 2rem; line-height: 1.46; font-weight: 800; }
 
-    .qr-zone {
-      display: grid;
-      justify-items: center;
-      gap: 1.1rem;
-    }
-
+    .qr-zone { display: grid; justify-items: center; gap: 1.1rem; }
     .qr-frame {
       display: grid;
       place-items: center;
@@ -430,36 +316,7 @@
       background: var(--white);
       box-shadow: var(--shadow);
     }
-
-    .qr-frame img {
-      display: block;
-      width: 88%;
-      height: 88%;
-      object-fit: contain;
-    }
-
-    .qr-placeholder {
-      width: 74%;
-      aspect-ratio: 1;
-      display: grid;
-      place-items: center;
-      border: 0.24rem dashed rgba(32, 33, 36, 0.36);
-      color: var(--muted);
-      text-align: center;
-      font-size: 1.35rem;
-      line-height: 1.35;
-      font-weight: 850;
-      padding: 1.5rem;
-    }
-
-    .slido-url {
-      min-height: 2.4rem;
-      color: var(--muted);
-      font-size: 1.15rem;
-      font-weight: 750;
-      text-align: center;
-      word-break: break-word;
-    }
+    .qr-frame img { display: block; width: 88%; height: 88%; object-fit: contain; }
 
     .nav {
       position: fixed;
@@ -485,17 +342,7 @@
       font-size: 1.8rem;
       font-weight: 900;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(32, 33, 36, 0.12);
       backdrop-filter: blur(12px);
-    }
-
-    .nav button:active {
-      transform: translateY(1px);
-    }
-
-    .nav button:disabled {
-      opacity: 0.35;
-      cursor: default;
     }
 
     .progress {
@@ -506,9 +353,8 @@
     }
 
     .progress-bar {
-      width: 9.09%;
+      width: 0%;
       height: 100%;
-      border-radius: inherit;
       background: linear-gradient(90deg, var(--accent), var(--accent-2));
       transition: width 260ms ease;
     }
@@ -538,340 +384,85 @@
       color: var(--ink);
       cursor: pointer;
       box-shadow: 0 10px 30px rgba(32, 33, 36, 0.12);
-      backdrop-filter: blur(12px);
     }
 
-    .home-btn svg {
-      width: 1.45rem;
-      height: 1.45rem;
-      stroke: currentColor;
-      stroke-width: 2.4;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
+    .home-btn svg { width: 1.45rem; height: 1.45rem; stroke: currentColor; stroke-width: 2.4; fill: none; }
 
     @media (max-width: 1180px) {
-      .slide {
-        padding: 3.6rem 2.4rem 5.2rem;
-      }
-
-      .slide-inner {
-        width: min(100%, 64rem);
-        gap: 2rem;
-      }
-
-      h1 {
-        font-size: 4rem;
-      }
-
-      h2,
-      .large-text {
-        font-size: 3.05rem;
-      }
-
-      .body-text {
-        font-size: 1.9rem;
-      }
-
-      .quote {
-        font-size: 3.15rem;
-      }
-
-      .kicker {
-        font-size: 1.18rem;
-      }
-
-      .two-column {
-        grid-template-columns: minmax(0, 30rem) minmax(20rem, 30rem);
-        gap: 2.4rem;
-        justify-content: center;
-      }
-
-      .two-column .large-text,
-      .two-column .body-text {
-        max-width: 15em;
-      }
-
-      .diagram {
-        width: min(100%, 30rem);
-        min-height: 20rem;
-      }
-
-      .diagram-node {
-        width: 7.3rem;
-        height: 7.3rem;
-        font-size: 1.08rem;
-      }
-
-      .diagram-node:nth-child(1) {
-        left: 7%;
-        top: 2rem;
-      }
-
-      .diagram-node:nth-child(2) {
-        right: 7%;
-        top: 2rem;
-      }
-
-      .diagram-node:nth-child(3) {
-        bottom: 1.7rem;
-      }
-
-      .arrow.one {
-        left: 44%;
-        top: 3.2rem;
-      }
-
-      .arrow.two {
-        right: 31%;
-        bottom: 4.2rem;
-      }
-
-      .arrow.three {
-        left: 29%;
-        bottom: 4.2rem;
-      }
-
-      .compare {
-        width: min(100%, 30rem);
-        grid-template-columns: 1fr;
-        gap: 0.85rem;
-      }
-
-      .compare-item {
-        grid-template-columns: 5.5rem minmax(0, 1fr);
-        gap: 1rem;
-        min-height: 5.8rem;
-        padding: 1.05rem 1.2rem;
-      }
-
-      .compare-label {
-        font-size: 1.75rem;
-      }
-
-      .compare-word {
-        font-size: 1.18rem;
-      }
-
-      .question-layout {
-        grid-template-columns: minmax(0, 38rem) minmax(15rem, 18rem);
-        gap: 2.4rem;
-      }
-
-      .question-text {
-        font-size: 1.65rem;
-        line-height: 1.44;
-      }
-
-      .statement-text {
-        font-size: 3.1rem;
-      }
-
-      .explain-text {
-        font-size: 1.95rem;
-      }
-
-      .bridge-text {
-        font-size: 2.1rem;
-      }
-
-      .split-grid {
-        gap: 1.2rem;
-      }
-
-      .feedback-panel {
-        min-height: 18rem;
-        padding: 1.35rem;
-        gap: 0.9rem;
-      }
-
-      .panel-title {
-        font-size: 1.1rem;
-      }
-
-      .panel-text {
-        font-size: 1.55rem;
-        line-height: 1.4;
-      }
-
-      .final-question {
-        font-size: 1.5rem;
-      }
-
-      .qr-frame {
-        width: min(16rem, 100%);
-      }
-
-      .slido-url {
-        font-size: 1rem;
-      }
+      .slide { padding: 3.6rem 2.4rem 5.2rem; }
+      h1 { font-size: 4rem; }
+      h2, .large-text { font-size: 3.05rem; }
     }
 
     @media (max-width: 900px) {
-      .slide {
-        padding: 5.2rem 2rem 6.5rem;
-      }
-
-      .slide-inner,
-      .two-column {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .question-layout {
-        grid-template-columns: minmax(0, 1fr) minmax(13rem, 14rem);
-        gap: 1.5rem;
-      }
-
-      h1 {
-        font-size: 3.05rem;
-      }
-
-      h2,
-      .large-text {
-        font-size: 2.15rem;
-      }
-
-      .body-text,
-      .question-text {
-        font-size: 1.32rem;
-      }
-
-      .statement-text {
-        font-size: 2.1rem;
-      }
-
-      .explain-text {
-        font-size: 1.38rem;
-      }
-
-      .split-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .feedback-panel {
-        min-height: auto;
-        padding: 1.2rem;
-      }
-
-      .panel-text {
-        font-size: 1.2rem;
-      }
-
-      .final-question {
-        font-size: 1.15rem;
-      }
-
-      .lead {
-        font-size: 1.45rem;
-      }
-
-      .quote {
-        font-size: 2rem;
-      }
-
-      .diagram {
-        min-height: 18rem;
-      }
-
-      .diagram-node {
-        width: 6.8rem;
-        height: 6.8rem;
-        font-size: 1rem;
-      }
-
-      .compare {
-        grid-template-columns: 1fr;
-      }
-
-      .compare-item {
-        grid-template-columns: 5.5rem minmax(0, 1fr);
-        min-height: 5.8rem;
-      }
-
-      .compare-label {
-        font-size: 1.65rem;
-      }
-
-      .compare-word {
-        font-size: 1rem;
-      }
-
-      .qr-frame {
-        width: min(13rem, 100%);
-      }
-    }
-
-    @media (max-width: 720px) {
-      .question-layout {
-        grid-template-columns: 1fr;
-        gap: 1.4rem;
-      }
-
-      .question-text {
-        font-size: 1.4rem;
-      }
+      .slide-inner, .two-column { grid-template-columns: 1fr; gap: 2rem; }
+      h1 { font-size: 3.05rem; }
+      .body-text, .question-text { font-size: 1.32rem; }
+      .diamond-container { height: 18rem; }
+      .diamond-label { font-size: 0.9rem; }
     }
   </style>
 </head>
 <body>
   <button class="home-btn" type="button" id="homeBtn" aria-label="回到第一頁" title="回到第一頁">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M3 11.5 12 4l9 7.5"></path>
-      <path d="M5.5 10.5V20h13v-9.5"></path>
-      <path d="M9.5 20v-6h5v6"></path>
-    </svg>
+    <svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5M5.5 10.5V20h13v-9.5M9.5 20v-6h5v6"></path></svg>
   </button>
 
   <main class="deck" aria-live="polite">
+    <!-- Slide 1 -->
     <section class="slide is-active">
       <div class="slide-inner">
-        <p class="kicker">Design Thinking</p>
-        <h1>設計思考裡的<br>「反脆弱」</h1>
+        <p class="kicker">Thinking in Design Thinking</p>
+        <h1>設計思考中的<br>「思考」</h1>
         <p class="lead">一個 prototype 變好的方式，<br>不是躲開批評，<br>而是學會使用批評。</p>
       </div>
     </section>
 
+    <!-- Slide 2 -->
+    <section class="slide">
+      <div class="slide-inner">
+        <p class="kicker">Double Diamond</p>
+        <h2>設計思考的關鍵過程：<br><span class="keyword">雙鑽石模型</span></h2>
+        <div class="diamond-container">
+          <svg class="diamond-svg" viewBox="0 0 800 300">
+            <path d="M50 150 L200 50 L350 150 L200 250 Z" fill="none" stroke="var(--muted)" stroke-width="2" />
+            <path d="M350 150 L500 50 L650 150 L500 250 Z" fill="none" stroke="var(--muted)" stroke-width="2" />
+            <text x="110" y="155" class="diamond-label">發現 Discover</text>
+            <text x="260" y="155" class="diamond-label">定義 Define</text>
+            <text x="410" y="155" class="diamond-label">發展 Develop</text>
+            <text x="560" y="155" class="diamond-label">交付 Deliver</text>
+            <circle cx="500" cy="150" r="110" class="diamond-highlight" />
+            <text x="440" y="285" fill="var(--accent)" font-weight="900" font-size="1.1rem">這裡是碰撞最激烈的區域</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3 -->
     <section class="slide statement-slide">
       <div class="slide-inner">
-        <p class="kicker">Why Antifragile</p>
-        <p class="explain-text bridge-text">設計思考的重點是「思考」。<br><br>學生透過 Trial and Error，一次次試誤、失敗、修正，<br>甚至是批評，讓 prototype 更接近真實需求。<br><br>問題是：當我們反覆面對不完美時，該如何思考「失敗」？<br><br>這時，「反脆弱」就派上用場。</p>
+        <p class="kicker">Friction and Growth</p>
+        <p class="explain-text">在發展（Develop）與交付（Deliver）中，<br>我們需要不斷地透過<span class="keyword">同理使用者、實作試錯</span>，<br>讓想法接受現實的「摩擦」。<br><br>這是一個充滿批評與失敗的區域，<br>但也是產品真正透過壓力「演進」的起點。</p>
       </div>
     </section>
 
-    <section class="slide">
-      <div class="slide-inner two-column">
-        <div>
-          <p class="kicker">Antifragile</p>
-          <h2><span class="keyword">反脆弱</span><br>由 Taleb 提出</h2>
-          <p class="body-text">不只是不害怕攻擊，<br>還能從<br><span class="keyword">壓力、錯誤、批評<br>與不確定</span><br>中變得更好。</p>
-        </div>
-        <div class="compare" aria-label="脆弱、強固、反脆弱比較">
-          <div class="compare-item">
-            <div class="compare-label">脆弱</div>
-            <div class="compare-word">遇到衝擊時，會受損。</div>
-          </div>
-          <div class="compare-item">
-            <div class="compare-label">強固</div>
-            <div class="compare-word">遇到衝擊時，能維持原狀。</div>
-          </div>
-          <div class="compare-item">
-            <div class="compare-label">反脆弱</div>
-            <div class="compare-word">遇到衝擊時，反而變得更好。</div>
-          </div>
-        </div>
+    <!-- Slide 4 -->
+    <section class="slide statement-slide">
+      <div class="slide-inner">
+        <p class="kicker">Trial and Error</p>
+        <p class="explain-text">設計思考的重點是「思考」。<br><br>學生透過一次次試誤、失敗、修正，<br>甚至是批評，讓 prototype 更接近真實需求。<br><br>問題是：當我們反覆面對不完美時，<br>該如何轉化這些「負面能量」？</p>
       </div>
     </section>
 
+    <!-- Slide 5 -->
     <section class="slide">
       <div class="slide-inner two-column">
         <div>
-          <p class="kicker">Prototype</p>
-          <p class="large-text">數實學生的<br><span class="keyword">反脆弱</span>精神<br>就是需要不斷找<br>不同的人試用，<br>再從回饋中校正</p>
+          <p class="kicker">Evolutionary Loop</p>
+          <h2><span class="keyword">演進</span>的力量</h2>
+          <p class="body-text">不只是承受攻擊，<br>而是從<br><span class="keyword">壓力、錯誤與回饋</span><br>中吸收養分，<br>讓設計在每次試用中進化。</p>
         </div>
-        <div class="diagram" aria-label="設計循環圖">
+        <div class="diagram">
           <div class="diagram-node">試作<br>Prototype</div>
           <div class="diagram-node">試用<br>Feedback</div>
           <div class="diagram-node">校正<br>Iterate</div>
@@ -882,34 +473,39 @@
       </div>
     </section>
 
+    <!-- Slide 6 -->
     <section class="slide">
       <div class="slide-inner">
         <p class="kicker">Blind Spot</p>
-        <p class="quote">但如果大家都只稱讚、不批評，<br>我們反而不知道<br>產品哪裡可以進步。</p>
+        <p class="quote">如果大家都只稱讚、不批評，<br>產品會停留在「虛假的完美」，<br>我們將永遠看不見<br>那些致命的盲點。</p>
       </div>
     </section>
 
+    <!-- Slide 7 -->
     <section class="slide">
       <div class="slide-inner">
         <p class="kicker">Designer Mindset</p>
-        <p class="large-text">因此，設計師都必須是<span class="keyword">反脆弱</span>的。<br>不只不怕被批評，<br>還熱愛有回饋。</p>
+        <p class="large-text">因此，設計師必須建立<br><span class="keyword">健康的強韌</span>心態。<br>不只不怕被批評，<br>還要熱愛從回饋中挖掘寶藏。</p>
       </div>
     </section>
 
+    <!-- Slide 8 -->
     <section class="slide">
       <div class="slide-inner">
         <p class="kicker">Information</p>
-        <p class="large-text">我們知道<br>每個「好的、精準的批評」，<br>都是<span class="keyword">資訊</span>。</p>
+        <p class="large-text">因為我們知道<br>每個「好的、精準的批評」，<br>本質上都是珍貴的<span class="keyword">資訊</span>。</p>
       </div>
     </section>
 
+    <!-- Slide 9 -->
     <section class="slide statement-slide">
       <div class="slide-inner">
-        <p class="kicker">Useful Feedback</p>
+        <p class="kicker">Quality of Feedback</p>
         <p class="statement-text">那我們怎麼知道，<br>怎樣是提供資訊的<br>「精準批評」，<br>哪些只是我們不用理會的<br>「責罵」？</p>
       </div>
     </section>
 
+    <!-- Slide 10 -->
     <section class="slide statement-slide">
       <div class="slide-inner">
         <p class="kicker">What Counts</p>
@@ -917,6 +513,7 @@
       </div>
     </section>
 
+    <!-- Slide 11 -->
     <section class="slide split-slide">
       <div class="slide-inner split-grid">
         <article class="feedback-panel">
@@ -930,34 +527,30 @@
       </div>
     </section>
 
+    <!-- Slide 12 -->
     <section class="slide question-slide">
       <div class="slide-inner question-layout">
         <div>
           <p class="kicker">Your Turn</p>
-          <p class="question-text final-question">你的人生經驗中，<br>收到的建議比較偏向<br>「客觀精準的就事論事」<br>還是「宣洩情緒的批評」？<br><br>你願意簡單分享其中一次的場景嗎？<br>當下你的感受是什麼？<br><br>掃描右側 QR code 留言，<br>也看看其他人的分享！</p>
+          <p class="question-text">你的人生經驗中，<br>收到的建議比較偏向<br>「客觀精準的就事論事」<br>還是「宣洩情緒的批評」？<br><br>你願意分享其中一次的感受嗎？<br><br>掃描右側 QR code 留言，<br>看看其他人的分享！</p>
         </div>
         <div class="qr-zone">
-          <div class="qr-frame" id="qrFrame">
-            <div class="qr-placeholder">待放入<br>Padlet 連結</div>
-          </div>
-          <div class="slido-url" id="slidoUrlText">Padlet QR code</div>
+          <div class="qr-frame" id="qrFrame"></div>
+          <div class="slido-url" id="slidoUrlText">Padlet</div>
         </div>
       </div>
     </section>
   </main>
 
-  <div class="counter" id="counter">1 / 11</div>
-  <nav class="nav" aria-label="投影片導覽">
-    <button type="button" id="prevBtn" aria-label="上一張">‹</button>
-    <div class="progress" aria-hidden="true">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-    <button type="button" id="nextBtn" aria-label="下一張">›</button>
+  <div class="counter" id="counter">1 / 12</div>
+  <nav class="nav">
+    <button type="button" id="prevBtn">‹</button>
+    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+    <button type="button" id="nextBtn">›</button>
   </nav>
 
   <script>
     const PADLET_URL = "https://padlet.com/tschool/2026-er57ufx52x77wybi";
-
     const slides = Array.from(document.querySelectorAll(".slide"));
     const counter = document.getElementById("counter");
     const progressBar = document.getElementById("progressBar");
@@ -968,71 +561,29 @@
     const slidoUrlText = document.getElementById("slidoUrlText");
 
     let current = 0;
-    let touchStartX = 0;
 
     function renderQrCode() {
-      if (!PADLET_URL) {
-        return;
-      }
-
       const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=640x640&margin=24&data=" + encodeURIComponent(PADLET_URL);
-      qrFrame.innerHTML = `<img src="${qrUrl}" alt="Padlet 留言 QR code">`;
-      slidoUrlText.textContent = PADLET_URL;
+      qrFrame.innerHTML = `<img src="${qrUrl}" alt="Padlet QR code">`;
+      slidoUrlText.textContent = "掃描進入 Padlet";
     }
 
     function showSlide(index) {
       current = Math.max(0, Math.min(index, slides.length - 1));
-      slides.forEach((slide, slideIndex) => {
-        slide.classList.toggle("is-active", slideIndex === current);
-      });
-
+      slides.forEach((slide, idx) => slide.classList.toggle("is-active", idx === current));
       counter.textContent = `${current + 1} / ${slides.length}`;
       progressBar.style.width = `${((current + 1) / slides.length) * 100}%`;
       prevBtn.disabled = current === 0;
       nextBtn.disabled = current === slides.length - 1;
     }
 
-    function move(direction) {
-      showSlide(current + direction);
-    }
-
-    prevBtn.addEventListener("click", () => move(-1));
-    nextBtn.addEventListener("click", () => move(1));
+    prevBtn.addEventListener("click", () => showSlide(current - 1));
+    nextBtn.addEventListener("click", () => showSlide(current + 1));
     homeBtn.addEventListener("click", () => showSlide(0));
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowRight" || event.key === " ") {
-        move(1);
-      }
-
-      if (event.key === "ArrowLeft") {
-        move(-1);
-      }
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === " ") showSlide(current + 1);
+      if (e.key === "ArrowLeft") showSlide(current - 1);
     });
-
-    document.addEventListener("click", (event) => {
-      if (event.target.closest("button")) {
-        return;
-      }
-
-      const half = window.innerWidth / 2;
-      move(event.clientX > half ? 1 : -1);
-    });
-
-    document.addEventListener("touchstart", (event) => {
-      touchStartX = event.changedTouches[0].clientX;
-    }, { passive: true });
-
-    document.addEventListener("touchend", (event) => {
-      const touchEndX = event.changedTouches[0].clientX;
-      const delta = touchEndX - touchStartX;
-
-      if (Math.abs(delta) < 48) {
-        return;
-      }
-
-      move(delta < 0 ? 1 : -1);
-    }, { passive: true });
 
     renderQrCode();
     showSlide(0);
