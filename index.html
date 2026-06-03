@@ -551,7 +551,11 @@
     const qrFrame = document.getElementById("qrFrame");
     const slidoUrlText = document.getElementById("slidoUrlText");
 
-    let current = 0;
+    const HOME_SLIDE_INDEX = 0;
+    const IDLE_TIMEOUT_MS = 2 * 60 * 1000;
+
+    let current = HOME_SLIDE_INDEX;
+    let idleTimeoutId;
 
     function renderQrCode() {
       const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=640x640&margin=24&data=" + encodeURIComponent(PADLET_URL);
@@ -568,16 +572,30 @@
       nextBtn.disabled = current === slides.length - 1;
     }
 
+    function resetIdleTimer() {
+      window.clearTimeout(idleTimeoutId);
+      idleTimeoutId = window.setTimeout(() => {
+        showSlide(HOME_SLIDE_INDEX);
+        resetIdleTimer();
+      }, IDLE_TIMEOUT_MS);
+    }
+
     prevBtn.addEventListener("click", () => showSlide(current - 1));
     nextBtn.addEventListener("click", () => showSlide(current + 1));
-    homeBtn.addEventListener("click", () => showSlide(0));
+    homeBtn.addEventListener("click", () => showSlide(HOME_SLIDE_INDEX));
     document.addEventListener("keydown", (e) => {
       if (e.key === "ArrowRight" || e.key === " ") showSlide(current + 1);
       if (e.key === "ArrowLeft") showSlide(current - 1);
     });
 
+    ["click", "pointerdown", "pointermove", "touchstart", "wheel"].forEach((eventName) => {
+      document.addEventListener(eventName, resetIdleTimer, { passive: true });
+    });
+    document.addEventListener("keydown", resetIdleTimer);
+
     renderQrCode();
-    showSlide(0);
+    showSlide(HOME_SLIDE_INDEX);
+    resetIdleTimer();
   </script>
 </body>
 </html>
